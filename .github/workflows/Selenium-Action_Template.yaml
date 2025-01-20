@@ -24,6 +24,6 @@ jobs:
 
       - name: Running the Python script
         run: python Selenium-Template.py
-          env:
+        env:
             EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         
