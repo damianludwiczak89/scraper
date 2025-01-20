@@ -48,9 +48,7 @@ html = driver.page_source
 driver.quit
 page = BeautifulSoup(html, 'html.parser')
 price = page.find('span', class_='whole')
-price = price.text
-print(price)
-price = int(price.replace('\u202f', ''))
+price = int(price.text.replace('\u202f', ''))
 
 message = MIMEMultipart()
 message['From'] = sender_email
