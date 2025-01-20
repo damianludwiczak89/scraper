@@ -52,6 +52,10 @@ price = price.text
 print(price)
 price = int(price.replace('\u202f', ''))
 
+message = MIMEMultipart()
+message['From'] = sender_email
+message['To'] = receiver_email
+
 if price < 4199:
   message['Subject'] = f'Cena Laptopa spadła! Nowa cena: f{price}!'
 else:
