@@ -23,7 +23,7 @@ jobs:
         run: sudo apt-get install xvfb
 
       - name: Running the Python script
-        run: python Selenium-Template.py
+        run: python check_price.py
         env:
             EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         
