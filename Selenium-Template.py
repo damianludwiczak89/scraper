@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
 from bs4 import BeautifulSoup
+import os
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
