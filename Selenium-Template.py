@@ -48,7 +48,7 @@ html = driver.page_source
 driver.quit
 page = BeautifulSoup(html, 'html.parser')
 price = page.find('span', class_='whole')
-
+print(price)
 price = int(price.replace(' ', ''))
 
 if price < 4199:
