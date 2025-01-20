@@ -49,7 +49,7 @@ driver.quit
 page = BeautifulSoup(html, 'html.parser')
 price = page.find('span', class_='whole')
 
-price = int(price.text.replace(' ', ''))
+price = int(price.replace(' ', ''))
 
 if price < 4199:
   message['Subject'] = f'Cena Laptopa spadła! Nowa cena: f{price}!'
