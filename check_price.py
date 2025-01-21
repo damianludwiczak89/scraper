@@ -55,7 +55,7 @@ message['From'] = sender_email
 message['To'] = receiver_email
 
 if price < 4199:
-  message['Subject'] = f'Cena Laptopa spadła! Nowa cena: f{price}!'
+  message['Subject'] = f'Cena Laptopa spadła! Nowa cena: {price}!'
 else:
   message['Subject'] = f'Cena nie spadła. Aktualna cena {price}'
 
