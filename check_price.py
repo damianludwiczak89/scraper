@@ -48,7 +48,7 @@ password = os.getenv("EMAIL_PASSWORD")
 driver = webdriver.Chrome(options = chrome_options)
 driver.get('https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-15x-k3504va-ma480w-15-6-oled-i7-1355u-16gb-ram-1tb-ssd-windows-11-home')
 
-WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'whole')))
+WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'whole')))
 
 html = driver.page_source
 driver.quit
