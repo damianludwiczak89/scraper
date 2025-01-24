@@ -21,7 +21,7 @@ message = MIMEMultipart()
 message['From'] = sender_email
 message['To'] = receiver_email
 
-if price < 109.99:
+if price < 109.96:
   message['Subject'] = f'CENA SŁUPKA SPADŁA!!!! Nowa cena: {price} zł!'
 else:
   message['Subject'] = f'Cena słupka nie zmalała. Aktualna cena: {price} zł!'
