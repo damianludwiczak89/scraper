@@ -45,7 +45,7 @@ password = os.getenv("EMAIL_PASSWORD")
 
     
 driver = webdriver.Chrome(options = chrome_options)
-driver.get('https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-15x-k3504va-ma480w-15-6-oled-i7-1355u-16gb-ram-1tb-ssd-windows-11-home')
+driver.get('https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-s-k5504vn-ma088w-15-6-oled-i5-13500h-16gb-ram-512gb-ssd-arc-a350m-windows-11-home')
 
 # Sometimes page does not load correctly, added a loop to try few times
 for _ in range(5):
@@ -65,12 +65,12 @@ message = MIMEMultipart()
 message['From'] = sender_email
 message['To'] = receiver_email
 
-if price < 4199:
+if price < 399:
   message['Subject'] = f'Cena Laptopa spadła! Nowa cena: {price}!'
 else:
   message['Subject'] = f'Cena nie spadła. Aktualna cena {price}'
 
-body = "https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-15x-k3504va-ma480w-15-6-oled-i7-1355u-16gb-ram-1tb-ssd-windows-11-home"
+body = "https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-s-k5504vn-ma088w-15-6-oled-i5-13500h-16gb-ram-512gb-ssd-arc-a350m-windows-11-home"
 
 message.attach(MIMEText(body, 'plain'))
 
