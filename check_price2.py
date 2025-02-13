@@ -14,7 +14,7 @@ password = os.getenv("EMAIL_PASSWORD")
 url = 'https://www.zooplus.pl/shop/koty/drapaki_dla_kota/drapak_maly/100_cm/49253?activeVariant=49253.0'
 result = requests.get(url)
 page = BeautifulSoup(result.text, 'html.parser')
-price = page.find('span', class_='z-price__amount z-price__amount--standard').text
+price = page.find('span', class_='z-product-price__amount').text
 price = float(price[:-3].replace(',', '.'))
 
 message = MIMEMultipart()
