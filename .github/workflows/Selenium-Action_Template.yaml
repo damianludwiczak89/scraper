@@ -24,10 +24,6 @@ jobs:
       - name: Install xvfb
         run: sudo apt-get install xvfb
 
-      - name: Running the Python script
-        run: python check_price.py
-        env:
-            EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
 
       - name: Running the Python script
         run: python check_price2.py
