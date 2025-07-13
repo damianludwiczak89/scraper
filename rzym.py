@@ -40,7 +40,7 @@ for option in options:
     chrome_options.add_argument(option)
 
 sender_email = "damian_konin@tlen.pl"
-receiver_email = "damian_konin@tlen.pl, olga_m922@tlen.pl"
+receiver_emails = ["damian_konin@tlen.pl", "olga_m922@tlen.pl"]
 password = os.getenv("EMAIL_PASSWORD")
 
 links = [
@@ -79,7 +79,7 @@ for link in links:
 
 message = MIMEMultipart()
 message['From'] = sender_email
-message['To'] = receiver_email
+message['To'] = ", ".join(receiver_emails)
 
 message['Subject'] = f'Ceny rzym'
 
@@ -92,7 +92,7 @@ try:
         server.starttls()
         server.login(sender_email, password)
         text = message.as_string()
-        server.sendmail(sender_email, receiver_email, text)
+        server.sendmail(sender_email, receiver_emails, text)
         print("Email sent successfully!")
 except Exception as e:
     print(f"Failed to send email. Error: {e}")
