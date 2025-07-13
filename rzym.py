@@ -48,7 +48,7 @@ driver = webdriver.Chrome(options = chrome_options)
 driver.get('https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26')
 
 # Sometimes page does not load correctly, added a loop to try few times
-for _ in range(5):
+for _ in range(1):
   try:
     WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')))
     break
@@ -59,19 +59,15 @@ html = driver.page_source
 driver.quit()
 page = BeautifulSoup(html, 'html.parser')
 price = page.find('span', class_='u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')
-print(type(price), price)
-price = int(price.text.replace('\u202f', ''))
+price = int(price.text.replace('\xa0zł\xa0', ''))
 
 message = MIMEMultipart()
 message['From'] = sender_email
 message['To'] = receiver_email
 
-if price < 3999:
-  message['Subject'] = f'Cena Laptopa spadła! Nowa cena: {price}!'
-else:
-  message['Subject'] = f'Cena nie spadła. Aktualna cena {price}'
+message['Subject'] = f'Cena airbnb {price}!'
 
-body = "https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/laptop-asus-vivobook-s-k5504vn-ma088w-15-6-oled-i5-13500h-16gb-ram-512gb-ssd-arc-a350m-windows-11-home"
+body = "'https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26"
 
 message.attach(MIMEText(body, 'plain'))
 
