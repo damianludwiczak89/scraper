@@ -28,4 +28,9 @@ jobs:
         run: python rzym.py
         env:
             EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+      - name: Running the Python script
+        run: python check_price2.py
+        env:
+            EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         
