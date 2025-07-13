@@ -40,7 +40,7 @@ for option in options:
     chrome_options.add_argument(option)
 
 sender_email = "damian_konin@tlen.pl"
-receiver_email = "damian_konin@tlen.pl"
+receiver_email = "damian_konin@tlen.pl, olga_m922@tlen.pl"
 password = os.getenv("EMAIL_PASSWORD")
 
 links = [
@@ -48,7 +48,11 @@ links = [
    ['https://www.airbnb.pl/rooms/1457230180563789971?photo_id=2242190329&source_impression_id=p3_1752397904_P3QTKep2EaRxFCf5&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 3642],
    ['https://www.airbnb.pl/rooms/31469942?photo_id=2121079081&source_impression_id=p3_1752397905_P3W0oIogPVAADBSM&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4511], 
    ['https://www.airbnb.pl/rooms/14319489?photo_id=192184202&source_impression_id=p3_1752397905_P3qCz4w1RY71gGX-&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4246],
-   ['https://www.airbnb.pl/rooms/1137549188556102228?photo_id=1892606846&source_impression_id=p3_1752397905_P3-mGMiggbjyWpJd&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4353]
+   ['https://www.airbnb.pl/rooms/1137549188556102228?photo_id=1892606846&source_impression_id=p3_1752397905_P3-mGMiggbjyWpJd&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4353],
+   ['https://www.airbnb.pl/rooms/4223067?photo_id=119301402&source_impression_id=p3_1752397904_P3zZPwvCSpUbVjjp&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 3361],
+   ['https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 5416],
+   ['https://www.airbnb.pl/rooms/1303533168913125082?photo_id=2088427312&source_impression_id=p3_1752397904_P3HElL7VddIy_mM7&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4468],
+   ['']
 ]
 
 body = ""
