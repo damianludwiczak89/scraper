@@ -52,7 +52,6 @@ links = [
    ['https://www.airbnb.pl/rooms/4223067?photo_id=119301402&source_impression_id=p3_1752397904_P3zZPwvCSpUbVjjp&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 3361],
    ['https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 5416],
    ['https://www.airbnb.pl/rooms/1303533168913125082?photo_id=2088427312&source_impression_id=p3_1752397904_P3HElL7VddIy_mM7&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4468],
-   ['']
 ]
 
 body = ""
