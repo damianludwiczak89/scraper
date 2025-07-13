@@ -43,31 +43,44 @@ sender_email = "damian_konin@tlen.pl"
 receiver_email = "damian_konin@tlen.pl"
 password = os.getenv("EMAIL_PASSWORD")
 
+links = [
+   ['https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 668],
+   ['https://www.airbnb.pl/rooms/1457230180563789971?photo_id=2242190329&source_impression_id=p3_1752397904_P3QTKep2EaRxFCf5&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 514],
+   ['https://www.airbnb.pl/rooms/31469942?photo_id=2121079081&source_impression_id=p3_1752397905_P3W0oIogPVAADBSM&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 554], 
+   ['https://www.airbnb.pl/rooms/14319489?photo_id=192184202&source_impression_id=p3_1752397905_P3qCz4w1RY71gGX-&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 511],
+   ['https://www.airbnb.pl/rooms/1137549188556102228?photo_id=1892606846&source_impression_id=p3_1752397905_P3-mGMiggbjyWpJd&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 632]
+]
+
+body = ""
+
+for link in links:
     
-driver = webdriver.Chrome(options = chrome_options)
-driver.get('https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26')
+  driver = webdriver.Chrome(options = chrome_options)
+  driver.get(link[0])
 
-# Sometimes page does not load correctly, added a loop to try few times
-for _ in range(1):
-  try:
-    WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')))
-    break
-  except TimeoutException:
-     pass
+  # Sometimes page does not load correctly, added a loop to try few times
+  for _ in range(1):
+    try:
+      WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')))
+      break
+    except TimeoutException:
+      pass
 
-html = driver.page_source
-driver.quit()
-page = BeautifulSoup(html, 'html.parser')
-price = page.find('span', class_='u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')
-price = int(price.text.replace('\xa0zł\xa0', ''))
+  html = driver.page_source
+  driver.quit()
+  page = BeautifulSoup(html, 'html.parser')
+  price = page.find('span', class_='u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')
+  print(price)
+  price = int(price.text.replace('\xa0zł\xa0', ''))
+  body += f'\n{link[0]} - cena startowa {link[1]}, obecna cena - {price}'
 
 message = MIMEMultipart()
 message['From'] = sender_email
 message['To'] = receiver_email
 
-message['Subject'] = f'Cena airbnb {price}!'
+message['Subject'] = f'Ceny rzym'
 
-body = "'https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26"
+
 
 message.attach(MIMEText(body, 'plain'))
 
