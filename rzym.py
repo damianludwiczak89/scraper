@@ -73,7 +73,6 @@ for link in links:
   driver.quit()
   page = BeautifulSoup(html, 'html.parser')
   price = [x.text.strip() for x in page.find_all('span', class_='_j1kt73') if 'zł' in x.text][0]
-  print(price)
   price = int(price.replace('\xa0', '').split(',')[0])
   body += f'\n - cena startowa {link[1]}, obecna cena - {price} -- {link[0]} \n\n'
 
