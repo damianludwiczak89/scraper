@@ -61,7 +61,7 @@ for link in links:
   # Sometimes page does not load correctly, added a loop to try few times
   for _ in range(1):
     try:
-      WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')))
+      WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, '_j1kt73')))
       break
     except TimeoutException:
       pass
