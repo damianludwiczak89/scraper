@@ -69,9 +69,9 @@ for link in links:
   html = driver.page_source
   driver.quit()
   page = BeautifulSoup(html, 'html.parser')
-  price = page.find('span', class_='_j1kt73')
-  print(price.text)
-  price = int(price.text.replace('\xa0zł\xa0', ''))
+  price = [x.text.strip() for x in page.find_all('span', class_='_j1kt73') if 'zł' in x.text][0]
+  print(price)
+  price = int(price.replace('\xa0zł\xa0', ''))
   body += f'\n - cena startowa {link[1]}, obecna cena - {price} -- {link[0]} \n\n'
 
 message = MIMEMultipart()
