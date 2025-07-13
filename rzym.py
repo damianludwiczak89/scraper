@@ -71,8 +71,11 @@ for link in links:
   page = BeautifulSoup(html, 'html.parser')
   price = page.find('span', class_='u1dgw2qm atm_7l_rb934l atm_cs_1peztlj dir dir-ltr')
   print(price)
+  if price is None:
+     price = page.find('span', class_='_hb913q')
+     
   price = int(price.text.replace('\xa0zł\xa0', ''))
-  body += f'\n{link[0]} - cena startowa {link[1]}, obecna cena - {price}'
+  body += f'\n - cena startowa {link[1]}, obecna cena - {price} -- {link[0]} \n\n'
 
 message = MIMEMultipart()
 message['From'] = sender_email
