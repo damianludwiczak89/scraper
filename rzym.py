@@ -47,7 +47,7 @@ links = [
    ['https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 5416],
    ['https://www.airbnb.pl/rooms/1457230180563789971?photo_id=2242190329&source_impression_id=p3_1752397904_P3QTKep2EaRxFCf5&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 3642],
    ['https://www.airbnb.pl/rooms/31469942?photo_id=2121079081&source_impression_id=p3_1752397905_P3W0oIogPVAADBSM&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4551], 
-   ['https://www.airbnb.pl/rooms/14319489?photo_id=192184202&source_impression_id=p3_1752397905_P3qCz4w1RY71gGX-&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4246],
+   ['https://www.airbnb.pl/rooms/14319489?photo_id=192184202&source_impression_id=p3_1752397905_P3qCz4w1RY71gGX-&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4248],
    ['https://www.airbnb.pl/rooms/1137549188556102228?photo_id=1892606846&source_impression_id=p3_1752397905_P3-mGMiggbjyWpJd&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 4353],
    ['https://www.airbnb.pl/rooms/4223067?photo_id=119301402&source_impression_id=p3_1752397904_P3zZPwvCSpUbVjjp&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 3361],
    ['https://www.airbnb.pl/rooms/1110043269300501078?photo_id=1859810333&source_impression_id=p3_1752397905_P3ECu5IZ-5iMUATI&check_in=2025-08-20&guests=2&adults=2&check_out=2025-08-26', 5416],
@@ -63,7 +63,7 @@ for link in links:
   driver.get(link[0])
 
   # Sometimes page does not load correctly, added a loop to try few times
-  for _ in range(1):
+  for _ in range(3):
     try:
       WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, '_j1kt73')))
       break
