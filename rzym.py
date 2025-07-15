@@ -74,6 +74,9 @@ for link in links:
   html = driver.page_source
   driver.quit()
   page = BeautifulSoup(html, 'html.parser')
+  print(html)
+  print()
+  print(page)
   if link[2] == 'airbnb':
     price = [x.text.strip() for x in page.find_all('span', class_='_j1kt73') if 'zł' in x.text][0]
     price = int(price.replace('\xa0', '').split(',')[0])
