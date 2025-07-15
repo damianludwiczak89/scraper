@@ -26,7 +26,7 @@ options = [
    "--window-size=1200,1200",
     "--ignore-certificate-errors"
  
-    "--headless",
+    "--headless=new",
     #"--disable-gpu",
     #"--window-size=1920,1200",
     #"--ignore-certificate-errors",
@@ -63,25 +63,13 @@ for link in links:
   driver = webdriver.Chrome(options = chrome_options)
   driver.get(link[0])
 
-  try:
-      if link[2] == 'booking':
-          WebDriverWait(driver, 60).until(
-              lambda d: any(
-                  'zł' in el.text for el in d.find_elements(By.CLASS_NAME, 'prco-valign-middle-helper')
-              )
-          )
-      else:
-          WebDriverWait(driver, 60).until(
-              lambda d: any(
-                  'zł' in el.text for el in d.find_elements(By.CLASS_NAME, '_j1kt73')
-              )
-          )
-  except TimeoutException:
-      print(f"Timeout waiting for price for {link[0]}")
-      with open("debug_failed_page.html", "w", encoding="utf-8") as f:
-          f.write(driver.page_source)
-      price = "N/A"
-      continue
+  # Sometimes page does not load correctly, added a loop to try few times
+  for _ in range(3):
+    try:
+      WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, '_j1kt73' if link[2]=='airbnb' else 'prco-valign-middle-helper')))
+      break
+    except TimeoutException:
+      pass
 
   html = driver.page_source
   driver.quit()
