@@ -82,6 +82,7 @@ for link in links:
     price = int(price.replace('\xa0', '').split(',')[0])
   elif link[2] == 'booking':
     price = page.find_all('span', class_='prco-valign-middle-helper')
+    print(link[0], '\n', price)
     price = min([
         x.text.strip()        
         .replace('\xa0', '')       
