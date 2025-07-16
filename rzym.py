@@ -66,7 +66,7 @@ for link in links:
   # Sometimes page does not load correctly, added a loop to try few times
   for _ in range(3):
     try:
-      WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, '_j1kt73' if link[2]=='airbnb' else 'prco-valign-middle-helper')))
+      WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.CLASS_NAME, '_j1kt73' if link[2]=='airbnb' else 'prco-valign-middle-helper')))
       break
     except TimeoutException:
       pass
