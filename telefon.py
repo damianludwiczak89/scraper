@@ -61,21 +61,39 @@ page = BeautifulSoup(html, 'html.parser')
 prices = page.find_all('span', class_='s-rdo-price')
 
 
-price = prices[-1].text.split('lub')[-1]
-print(price)
+price_samsung = prices[-1].text.split('lub')[-1]
+print(price_samsung)
+
+driver = webdriver.Chrome(options = chrome_options)
+driver.get('https://www.mediaexpert.pl/smartfony-i-zegarki/smartfony/smartfon-samsung-galaxy-s25-ultra-5g-12gb-1tb-6-9-120hz-czarny-sm-s938')
+
+# Sometimes page does not load correctly, added a loop to try few times
+for _ in range(3):
+  try:
+    WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CLASS_NAME, 'whole')))
+    break
+  except TimeoutException:
+    pass
+
+html = driver.page_source
+driver.quit()
+page = BeautifulSoup(html, 'html.parser')
+price = page.find('span', class_='whole')
+price_media = int(price.text.replace('\u202f', ''))
 
 
 
-body = 'https://www.samsung.com/pl/smartphones/galaxy-s25-ultra/buy/'
+body = 'https://www.samsung.com/pl/smartphones/galaxy-s25-ultra/buy/ \nhttps://www.mediaexpert.pl/smartfony-i-zegarki/smartfony/smartfon-samsung-galaxy-s25-ultra-5g-12gb-1tb-6-9-120hz-czarny-sm-s938'
+
 
 message = MIMEMultipart()
 message['From'] = sender_email
 message['To'] = receiver_email
 
-if int(price[0:5].replace(" ", "")) < 7599:
-  message['Subject'] = f'Cena telefonu spadła! Nowa cena: {price}!'
+if int(price_samsung[0:5].replace(" ", "")) < 7599 or int(price_media) < 7599:
+  message['Subject'] = f'Cena telefonu spadła! Samsung: {price_samsung.replace(" ", "")}, Media: {price_media},00 zł!'
 else:
-  message['Subject'] = f'cena nie spadła - {price}'
+  message['Subject'] = f'cena nie spadła - Samsung: {price_samsung.replace(" ", "")}, Media: {price_media},00 zł'
 
 message.attach(MIMEText(body, 'plain'))
 
